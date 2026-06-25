@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <meta name="description" content="Multi-tenant SaaS platform with subscription billing, team management, revenue analytics, and role-based access. Built with React, Node.js, Stripe.">
+  <meta property="og:title" content="SaaS Dashboard - Mostafa Ali Portfolio">
+  <meta property="og:description" content="Comprehensive SaaS analytics dashboard with real-time metrics, MRR tracking, churn analysis, and user cohorts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mostafaali.dev/saas-dashboard/">
+  <meta property="og:image" content="https://mostafaali.dev/saas-dashboard-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SaaS Dashboard - Mostafa Ali Portfolio">
+  <meta name="twitter:description" content="Comprehensive SaaS analytics dashboard with real-time metrics, MRR tracking, churn analysis, and user cohorts.">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SaaS Dashboard — Project Showcase</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:#0b1120;color:#e2e8f0;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
@@ -165,13 +176,13 @@ a{color:inherit;text-decoration:none}
 <body>
 <div class="page">
 
-<a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+<a href="../index.html" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Portfolio</a>
 
 <section class="hero">
-  <div class="hero-badge"><i class="fas fa-rocket"></i> React + Node.js + Stripe</div>
+  <div class="hero-badge"><i class="fas fa-rocket" aria-hidden="true"></i> React + Node.js + Stripe</div>
   <h1 class="hero-title">SaaS Dashboard</h1>
   <p class="hero-desc">A full-stack multi-tenant SaaS boilerplate with subscription billing, role-based access control, revenue analytics, and team management — built for production scale.</p>
-  <a href="#" class="hero-cta"><i class="fas fa-eye"></i> View Live Demo</a>
+  <a href="demo.html" class="hero-cta"><i class="fas fa-eye" aria-hidden="true"></i> View Live Demo</a>
 </section>
 
 <section class="section">
@@ -189,16 +200,13 @@ a{color:inherit;text-decoration:none}
       <div class="app-sidebar">
         <div class="sidebar-logo">
           <div class="logo-icon"><i class="fas fa-chart-simple"></i></div>
-          <span>Dashbird</span>
+          <span>SaaS Dashboard</span>
         </div>
         <div class="nav-label">Main</div>
         <div class="nav-item active"><i class="fas fa-th-large"></i> Overview</div>
         <div class="nav-item"><i class="fas fa-credit-card"></i> Billing</div>
         <div class="nav-item"><i class="fas fa-users"></i> Team</div>
         <div class="nav-item"><i class="fas fa-gear"></i> Settings</div>
-        <div class="nav-label">Workspace</div>
-        <div class="nav-item"><i class="fas fa-file-invoice"></i> Invoices</div>
-        <div class="nav-item"><i class="fas fa-chart-bar"></i> Analytics</div>
       </div>
       <div class="app-main">
         <div class="app-topbar">
@@ -267,7 +275,7 @@ a{color:inherit;text-decoration:none}
               </div>
               <div class="activity-item">
                 <div class="activity-icon amber"><i class="fas fa-arrow-up"></i></div>
-                <div class="activity-text"><strong>Sarah Chen</strong> upgraded from Starter to <strong>Pro Plan</strong></div>
+                <div class="activity-text"><strong>Sarah Chen</strong> upgraded from Starter to <strong>Pro</strong></div>
                 <span class="activity-time">14m ago</span>
               </div>
               <div class="activity-item">
@@ -277,7 +285,7 @@ a{color:inherit;text-decoration:none}
               </div>
               <div class="activity-item">
                 <div class="activity-icon green"><i class="fas fa-circle-check"></i></div>
-                <div class="activity-text"><strong>Mike R.</strong> paid <strong>$249/mo</strong> — Business plan renewal</div>
+                <div class="activity-text"><strong>Mike R.</strong> paid <strong>$249/mo</strong> — Pro plan renewal</div>
                 <span class="activity-time">2h ago</span>
               </div>
             </div>
@@ -285,6 +293,15 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title"><i class="fas fa-bullseye" style="color:#6366f1;margin-right:10px"></i> Case Study</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+    <div class="feature-card"><i class="fas fa-exclamation-triangle" style="color:#f59e0b"></i><h3>Problem</h3><p>SaaS businesses need an analytics dashboard that provides real-time metrics, user analytics, and revenue tracking without expensive third-party tools.</p></div>
+    <div class="feature-card"><i class="fas fa-lightbulb" style="color:#8b5cf6"></i><h3>Solution</h3><p>Built a comprehensive SaaS dashboard with React frontend and Node.js/Express backend featuring real-time metrics, MRR tracking, churn analysis, user cohorts, and role-based access.</p></div>
+    <div class="feature-card"><i class="fas fa-chart-line" style="color:#22c55e"></i><h3>Result</h3><p>Consolidated analytics with real-time metrics, MRR tracking, and user cohorts — all within the application stack.</p></div>
   </div>
 </section>
 
@@ -305,12 +322,12 @@ a{color:inherit;text-decoration:none}
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
       <h3>4 Subscription Plans</h3>
-      <p>Starter, Pro, Business, and Enterprise tiers with varying feature sets and pricing. Seamless upgrade and downgrade paths.</p>
+      <p>Free, Starter, Pro, and Enterprise tiers with varying feature sets and pricing. Seamless upgrade and downgrade paths.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
       <h3>Stripe Billing</h3>
-      <p>Secure payment processing with Stripe. Automatic invoicing, usage-based billing, and prorated charges for plan changes.</p>
+      <p>Secure payment processing with Stripe integration. Supports subscription plans, checkout flows, and webhook event handling.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
@@ -348,29 +365,27 @@ a{color:inherit;text-decoration:none}
     <div class="code-body">
 <span class="tree-dir">backend/</span><span class="tree-pipe">  </span><span class="tree-comment"># Express API server</span>
 <span class="tree-pipe">├──</span> <span class="tree-dir">src/</span>
+<span class="tree-pipe">│  ├──</span> <span class="tree-file">index.ts</span>              <span class="tree-comment"># Entry point</span>
 <span class="tree-pipe">│  ├──</span> <span class="tree-dir">routes/</span>
 <span class="tree-pipe">│  │  ├──</span> <span class="tree-file">auth.ts</span>            <span class="tree-comment"># Login, signup, JWT refresh</span>
 <span class="tree-pipe">│  │  ├──</span> <span class="tree-file">organizations.ts</span>    <span class="tree-comment"># Multi-tenant org CRUD</span>
 <span class="tree-pipe">│  │  ├──</span> <span class="tree-file">billing.ts</span>          <span class="tree-comment"># Stripe plans, webhooks</span>
 <span class="tree-pipe">│  │  └──</span> <span class="tree-file">dashboard.ts</span>        <span class="tree-comment"># Stats, charts, activity</span>
-<span class="tree-pipe">│  ├──</span> <span class="tree-file">middleware/</span>           <span class="tree-comment"># Auth, RBAC, rate-limit</span>
-<span class="tree-pipe">│  ├──</span> <span class="tree-file">models/</span>               <span class="tree-comment"># User, Org, Subscription</span>
-<span class="tree-pipe">│  └──</span> <span class="tree-file">config/</span>               <span class="tree-comment"># DB, Stripe, env vars</span>
+<span class="tree-pipe">│  └──</span> <span class="tree-dir">middleware/</span>
+<span class="tree-pipe">│     └──</span> <span class="tree-file">auth.ts</span>            <span class="tree-comment"># JWT verification</span>
 <span class="tree-pipe">├──</span> <span class="tree-file">package.json</span>
 <span class="tree-pipe">└──</span> <span class="tree-file">tsconfig.json</span>
 
 <span class="tree-dir">frontend/</span><span class="tree-pipe"> </span><span class="tree-comment"># React SPA</span>
 <span class="tree-pipe">├──</span> <span class="tree-dir">src/</span>
-<span class="tree-pipe">│  ├──</span> <span class="tree-dir">pages/</span>
-<span class="tree-pipe">│  │  ├──</span> <span class="tree-file">Login.tsx</span>             <span class="tree-comment"># Auth page (email/pass or SSO)</span>
-<span class="tree-pipe">│  │  └──</span> <span class="tree-file">Dashboard.tsx</span>         <span class="tree-comment"># Main dashboard layout</span>
-<span class="tree-pipe">│  ├──</span> <span class="tree-file">components/</span>            <span class="tree-comment"># Reusable UI components</span>
-<span class="tree-pipe">│  ├──</span> <span class="tree-file">hooks/</span>                 <span class="tree-comment"># Custom React hooks</span>
-<span class="tree-pipe">│  ├──</span> <span class="tree-file">api/</span>                   <span class="tree-comment"># Axios client & endpoints</span>
-<span class="tree-pipe">│  └──</span> <span class="tree-file">context/</span>               <span class="tree-comment"># Auth, Org contexts</span>
+<span class="tree-pipe">│  ├──</span> <span class="tree-file">App.tsx</span>                <span class="tree-comment"># Root component</span>
+<span class="tree-pipe">│  ├──</span> <span class="tree-file">main.tsx</span>               <span class="tree-comment"># Entry point</span>
+<span class="tree-pipe">│  └──</span> <span class="tree-dir">pages/</span>
+<span class="tree-pipe">│     ├──</span> <span class="tree-file">Login.tsx</span>            <span class="tree-comment"># Auth page (email/pass or SSO)</span>
+<span class="tree-pipe">│     └──</span> <span class="tree-file">Dashboard.tsx</span>        <span class="tree-comment"># Main dashboard layout</span>
 <span class="tree-pipe">├──</span> <span class="tree-file">package.json</span>
 <span class="tree-pipe">├──</span> <span class="tree-file">vite.config.ts</span>
-<span class="tree-pipe">└──</span> <span class="tree-file">tsconfig.json</span>
+<span class="tree-pipe">└──</span> <span class="tree-file">index.html</span>
     </div>
   </div>
 </section>
@@ -382,26 +397,26 @@ a{color:inherit;text-decoration:none}
     <div class="snippet-header"><i class="fas fa-circle" style="font-size:8px"></i> terminal &mdash; bash<div style="flex:1"></div><i class="far fa-clipboard" style="cursor:default;color:#475569"></i></div>
     <div class="snippet-body">
 <span class="comment"># Clone the monorepo</span>
-<span class="prompt">$</span> <span class="cmd">git clone https://github.com/your-org/saas-dashboard</span>
+<span class="prompt">$</span> <span class="cmd">git clone https://github.com/mostafaali/saas-dashboard</span>
 <span class="prompt">$</span> <span class="cmd">cd saas-dashboard</span>
 
 <span class="comment"># Install all dependencies (backend + frontend)</span>
 <span class="prompt">$</span> <span class="cmd">npm install</span>
 
 <span class="comment"># Set up environment variables</span>
-<span class="prompt">$</span> <span class="cmd">cp .env.example .env</span>
+<span class="prompt">$</span> <span class="cmd">cp backend/.env.example backend/.env</span>
 
 <span class="comment"># Start both servers concurrently</span>
 <span class="prompt">$</span> <span class="cmd">npm run dev</span>
 
-<span class="output">  ➜  Frontend: http://localhost:5173</span>
-<span class="output">  ➜  Backend:  http://localhost:3001</span>
+<span class="output">  ➜  Frontend: http://localhost:3001</span>
+<span class="output">  ➜  Backend:  http://localhost:5001</span>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  <a href="https://github.com/your-org/saas-dashboard" class="footer-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> View on GitHub — saas-dashboard</a>
+  <a href="https://github.com/mostafaali/saas-dashboard" class="footer-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> View on GitHub — saas-dashboard</a>
   <div class="footer-copy">&copy; 2026 Project Showcase</div>
 </footer>
 

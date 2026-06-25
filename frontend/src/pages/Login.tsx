@@ -7,6 +7,7 @@ export default function Login({ onLogin }: Props) {
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +19,8 @@ export default function Login({ onLogin }: Props) {
       });
       const data = await res.json();
       if (data.token) onLogin(data.token);
-    } catch {} finally { setLoading(false); }
+      else setErrorMessage(data.error || 'Authentication failed');
+    } catch (err) { console.error('Login failed:', err); setErrorMessage('Network error'); } finally { setLoading(false); }
   };
 
   return (
@@ -29,15 +31,18 @@ export default function Login({ onLogin }: Props) {
           <p style={{ color: '#94a3b8', fontSize: '.9rem' }}>{isRegister ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required style={{ width: '100%', padding: 14, borderRadius: 10, border: '1px solid #1e293b', background: '#0b1120', color: '#f1f5f9', fontSize: '.95rem', marginBottom: 16, outline: 'none', boxSizing: 'border-box' }} />
-          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required minLength={6} style={{ width: '100%', padding: 14, borderRadius: 10, border: '1px solid #1e293b', background: '#0b1120', color: '#f1f5f9', fontSize: '.95rem', marginBottom: 24, outline: 'none', boxSizing: 'border-box' }} />
-          <button type="submit" disabled={loading} style={{ width: '100%', padding: 14, borderRadius: 10, background: '#6366f1', color: '#fff', fontWeight: 600, fontSize: '1rem', cursor: 'pointer', border: 'none', transition: '.3s', opacity: loading ? .6 : 1 }}>
-            {loading ? <i className="fas fa-spinner fa-spin"></i> : isRegister ? 'Create Account' : 'Sign In'}
+          <label htmlFor="login-email" style={{ display: 'block', fontSize: '.85rem', color: '#94a3b8', marginBottom: 6 }}>Email</label>
+          <input id="login-email" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required aria-describedby="login-error" style={{ width: '100%', padding: 14, borderRadius: 10, border: '1px solid #1e293b', background: '#0b1120', color: '#f1f5f9', fontSize: '.95rem', marginBottom: 16, outline: 'none', boxSizing: 'border-box' }} />
+          <label htmlFor="login-password" style={{ display: 'block', fontSize: '.85rem', color: '#94a3b8', marginBottom: 6 }}>Password</label>
+          <input id="login-password" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required minLength={6} aria-describedby="login-error" style={{ width: '100%', padding: 14, borderRadius: 10, border: '1px solid #1e293b', background: '#0b1120', color: '#f1f5f9', fontSize: '.95rem', marginBottom: 24, outline: 'none', boxSizing: 'border-box' }} />
+          <div id="login-error" role="alert" aria-live="assertive" style={{ color: '#ef4444', fontSize: '.85rem', marginBottom: 12, display: errorMessage ? 'block' : 'none' }}>{errorMessage}</div>
+          <button type="submit" disabled={loading} aria-label={loading ? 'Loading' : isRegister ? 'Create Account' : 'Sign In'} style={{ width: '100%', padding: 14, borderRadius: 10, background: '#6366f1', color: '#fff', fontWeight: 600, fontSize: '1rem', cursor: 'pointer', border: 'none', transition: '.3s', opacity: loading ? .6 : 1 }}>
+            {loading ? <i className="fas fa-spinner fa-spin" aria-label="Loading"></i> : isRegister ? 'Create Account' : 'Sign In'}
           </button>
         </form>
         <p style={{ textAlign: 'center', marginTop: 20, color: '#94a3b8', fontSize: '.85rem' }}>
           {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
-          <button onClick={() => setIsRegister(!isRegister)} style={{ background: 'none', border: 'none', color: '#6366f1', cursor: 'pointer', fontWeight: 600, fontSize: '.85rem' }}>{isRegister ? 'Sign In' : 'Register'}</button>
+           <button type="button" onClick={() => { setIsRegister(!isRegister); setErrorMessage(''); }} style={{ background: 'none', border: 'none', color: '#6366f1', cursor: 'pointer', fontWeight: 600, fontSize: '.85rem' }}>{isRegister ? 'Sign In' : 'Register'}</button>
         </p>
       </div>
     </div>

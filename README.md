@@ -28,13 +28,19 @@ A multi-tenant SaaS dashboard with subscription billing, team management, and an
 ```bash
 cd backend
 npm install
-cp .env.example .env
+cp backend/.env.example backend/.env
 npm run dev
 ```
 
 ### Frontend
 ```bash
 cd frontend
+npm install
+npm run dev
+```
+
+### Root (both servers)
+```bash
 npm install
 npm run dev
 ```

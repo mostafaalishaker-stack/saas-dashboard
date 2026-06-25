@@ -2,16 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <meta name="description" content="Interactive demo of SaaS Dashboard with subscription billing, team management, and revenue analytics. React + Stripe portfolio project.">
+  <meta property="og:title" content="SaaS Dashboard Demo">
+  <meta property="og:description" content="Interactive demo of the SaaS Dashboard with subscription billing, team management, and revenue analytics.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mostafaali.dev/saas-dashboard-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SaaS Dashboard Demo">
+  <meta name="twitter:description" content="Interactive demo of the SaaS Dashboard with subscription billing, team management, and revenue analytics.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SaaS Dashboard Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Inter', sans-serif; background: #0b1120; color: #e2e8f0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
 a { color: #38bdf8; text-decoration: none; }
+.back-link{position:fixed;top:16px;left:16px;display:inline-flex;align-items:center;gap:6px;color:#64748b;font-size:13px;font-weight:500;z-index:100;background:#131c31;padding:8px 14px;border-radius:8px;border:1px solid #1e293b;transition:color .2s}.back-link:hover{color:#38bdf8}
 .fade-in { animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -161,16 +172,16 @@ a { color: #38bdf8; text-decoration: none; }
 </head>
 <body>
 
+<a href="../index.html" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Portfolio</a>
+
 <!-- ========== LOGIN PAGE ========== -->
 <div id="loginPage" class="login-page fade-in">
   <div class="login-box">
-    <h1><i class="fas fa-rocket" style="color:#38bdf8;margin-right:8px;"></i>SaaSPro</h1>
+    <h1><i class="fas fa-rocket" style="color:#38bdf8;margin-right:8px;"></i>SaaS Dashboard</h1>
     <p>Sign in to your dashboard</p>
-    <label>Email</label>
-    <input type="email" id="loginEmail" placeholder="you@company.com" value="demo@saaspro.com">
-    <label>Password</label>
-    <input type="password" id="loginPassword" placeholder="••••••••" value="demo123">
-    <div class="login-error" id="loginError">Invalid email or password</div>
+    <label for="loginEmail">Email</label> <input type="email" id="loginEmail" placeholder="you@company.com" value="demo@saaspro.com">
+    <label for="loginPassword">Password</label> <input type="password" id="loginPassword" placeholder="••••••••" value="demo123">
+    <div class="login-error" id="loginError" role="alert" aria-live="assertive">Invalid email or password</div>
     <button onclick="handleLogin()">Sign In</button>
     <p style="margin-top:1rem;text-align:center;font-size:0.8rem;color:#64748b;">Demo: demo@saaspro.com / demo123</p>
   </div>
@@ -184,7 +195,7 @@ a { color: #38bdf8; text-decoration: none; }
     <aside class="sidebar">
       <div class="sidebar-logo">
         <i class="fas fa-rocket"></i>
-        <span>SaaSPro</span>
+        <span>SaaS Dashboard</span>
       </div>
       <nav>
         <div class="nav-item active" data-view="overview" onclick="switchView('overview')">
@@ -248,7 +259,7 @@ a { color: #38bdf8; text-decoration: none; }
               <div class="plan-card-side">
                 <h4>Current Plan</h4>
                 <div class="plan-price">$99<span>/month</span></div>
-                <div class="plan-badge">Professional</div>
+                <div class="plan-badge">Business</div>
                 <ul>
                   <li><i class="fas fa-check"></i> Up to 50 team members</li>
                   <li><i class="fas fa-check"></i> 500 GB storage</li>
@@ -275,11 +286,11 @@ a { color: #38bdf8; text-decoration: none; }
         <!-- BILLING -->
         <div id="view-billing" class="content-view">
           <div class="billing-toggle">
-            <span class="active" id="billingMonthlyLabel">Monthly</span>
-            <div class="toggle-switch active" id="billingToggle" onclick="toggleBilling()">
+            <span id="billingMonthlyLabel">Monthly</span>
+            <div class="toggle-switch" id="billingToggle" onclick="toggleBilling()">
               <div class="toggle-knob"></div>
             </div>
-            <span id="billingYearlyLabel">Yearly <span style="color:#22c55e;font-size:0.75rem;">Save 20%</span></span>
+            <span class="active" id="billingYearlyLabel">Yearly <span style="color:#22c55e;font-size:0.75rem;">Save 20%</span></span>
           </div>
           <div class="plan-cards" id="planCards"></div>
         </div>
@@ -430,12 +441,15 @@ function toggleBilling() {
 function handleLogin() {
   const email = document.getElementById('loginEmail').value;
   const pass = document.getElementById('loginPassword').value;
+  const feedback = document.getElementById('loginFeedback');
   if (email === 'demo@saaspro.com' && pass === 'demo123') {
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
+    if (feedback) { feedback.textContent = 'Login successful'; feedback.style.display = 'block'; }
     initDashboard();
   } else {
     document.getElementById('loginError').style.display = 'block';
+    if (feedback) { feedback.textContent = 'Login failed: invalid credentials'; feedback.style.display = 'block'; }
   }
 }
 
